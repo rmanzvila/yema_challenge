@@ -3,6 +3,8 @@
 from django.contrib import admin
 from apps.appointment.models import Doctor, Patient, Appointment
 from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from apps.contrib.utils.email import send_email, generate_body
 
 
 @admin.register(Doctor)
@@ -38,7 +40,7 @@ class PatientAdmin( admin.ModelAdmin):
 
 
 @admin.register(Appointment)
-class AppointmenAdmin( admin.ModelAdmin):
+class AppointmentAdmin( admin.ModelAdmin):
     """Defines the Patient admin."""
 
     list_display = [
@@ -69,4 +71,18 @@ class AppointmenAdmin( admin.ModelAdmin):
     get_doctor_name.short_description = _('Doctor name')
     get_patient_name.admin_order_field = _('Patient name')
     get_patient_name.short_description = _('Patient name')
+
+    def send_by_email(self, request, queryset):
+        counter = 0
+        for appointment in queryset:
+            email_to = appointment.patient.email
+            if email_to:
+                html_content = generate_body(appointment)
+                send_email(_('Appointment detail'), [email_to], html_content)
+                counter += 1
+
+        messages.info(request, _('Emails sent: ') + str(counter))
+
+    send_by_email.short_description = _('Send by email to patient')
+    actions = ['send_by_email', ]
 

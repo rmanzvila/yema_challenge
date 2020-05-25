@@ -110,12 +110,17 @@ FIXTURE_DIRS = (
     join(PROJECT_PATH, 'fixtures'),
 )
 
-# EMAIL CONFIGURATION
-# ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST, EMAIL_PORT = '127.0.0.1', 1025  # Work with MailHog
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='Support <rmanzvila@gmail.com>')
 
+# ------------------------------------------------------------------------------
+# MAIL SETTINGS
+# ------------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='rmanzvila@gmail.com')
+SENDGRID_API_KEY = env('SENDGRID_API_KEY', default='XXXXXXXXXXXXXXXXX')
+
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+ANYMAIL = {
+    'SENDGRID_API_KEY': SENDGRID_API_KEY,
+}
 
 # TEMPLATES CONFIGURATION
 # ------------------------------------------------------------------------------

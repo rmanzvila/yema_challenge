@@ -24,14 +24,6 @@ INSTALLED_APPS += (
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
 
-
-# MAIL SETTINGS
-# ------------------------------------------------------------------------------
-# EMAIL_HOST, EMAIL_PORT = 'mailhog', 1025  # Work with MailHog
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='Grow <rmanzvila@gmail.com>')
-EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
-
-
 # DEBUGGING
 # ------------------------------------------------------------------------------
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2']  # localhost IP, docker internal IP
