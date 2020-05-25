@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-
+from django.utils import timezone
 from rest_framework import pagination
 from rest_framework.response import Response
 
-from apps.contrib.utils.dates import local_datetime
+
+def local_datetime(instance=None):
+    """Injects timezone to a datetime."""
+    if instance is None:
+        instance = timezone.now()
+    return timezone.localtime(instance)
 
 
 class HeaderPagination(pagination.PageNumberPagination):

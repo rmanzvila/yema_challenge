@@ -6,15 +6,16 @@ from django.contrib import admin
 from django.contrib.redirects.models import Redirect
 from django.urls import path
 from django.views.generic import TemplateView
-
-admin.site.site_header = 'Ricardo Manzanares Avila'
-admin.site.site_title = 'Ricardo Manzanares Avila'
-admin.site.index_title = 'Ricardo Manzanares Avila'
-
 from django.contrib.sites.models import Site
+from rest_framework.authtoken.models import Token
+
+admin.site.site_header = 'Yema Test - Ricardo Manzanares Avila'
+admin.site.site_title = 'Yema Test - Ricardo Manzanares Avila'
+admin.site.index_title = 'Yema Test - Ricardo Manzanares Avila'
 
 admin.site.unregister(Site)
 admin.site.unregister(Redirect)
+admin.site.unregister(Token)
 
 
 urlpatterns = [

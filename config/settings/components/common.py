@@ -54,12 +54,11 @@ THIRD_PARTY_APPS: Tuple[str, ...] = (
     # API Rest
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_api_key',
     'anymail',
 )
 
 LOCAL_APPS: Tuple[str, ...] = (
-
+    'apps.appointment.apps.AppointmentConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -90,7 +89,7 @@ SITE_ID = 1
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -98,7 +97,6 @@ USE_TZ = True
 LANGUAGES = [
     ('es', _('Spanish')),
     ('en', _('English')),
-    ('pt', _('Portuguese')),
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
