@@ -76,3 +76,4 @@ class Appointment(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
         verbose_name = _('Appointment')
         verbose_name_plural = _('Appointment')
         app_label = 'appointment'
+        ordering = ['-created_at']

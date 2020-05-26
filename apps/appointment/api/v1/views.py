@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from apps.appointment.api.v1.forms import AppointmentForm, AppointmentCompleteForm
 from apps.appointment.api.v1.selectors import *
 from apps.appointment.api.v1.serializers import *
-from apps.appointment.api.v1.service import AppointmentService
+from apps.appointment.api.v1.service import AppointmentService, PatientService
 from apps.contrib.api.responses import ErrorResponse
 
 
@@ -39,7 +39,9 @@ class AppointmentView(APIView):
         if not form.is_valid():
             return ErrorResponse('api.appointment.invalid_input', form.errors)
 
-        appointment = AppointmentService.create_appointment()
+        appointment = AppointmentService.create_appointment(
+            form.data['doctor'], form.data['patient'], form.data['appointment_time'], form.data['comments']
+        )
         return Response(AppointmentSerializer(appointment, many=False).data)
 
 
@@ -55,7 +57,12 @@ class AppointmentCompleteView(APIView):
         if not form.is_valid():
             return ErrorResponse('api.appointment.invalid_input', form.errors)
 
-        appointment = AppointmentService.create_appointment()
+        patient = PatientService.create_patient(
+            form.data['name'], form.data['last_name'], form.data['email'], form.data['age']
+        )
+        appointment = AppointmentService.create_appointment(
+            form.data['doctor'], patient.uuid, form.data['appointment_time'], form.data['comments']
+        )
         return Response(AppointmentSerializer(appointment, many=False).data)
 
 
