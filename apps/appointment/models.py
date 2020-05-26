@@ -8,16 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 class Doctor(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     """Represents the doctor info."""
 
-    name = models.CharField(
-        verbose_name=_('Name'),
-        max_length=250
-    )
-
-    last_name = models.CharField(
-        verbose_name=_('Last name'),
-        max_length=250
-    )
-
+    name = models.CharField(verbose_name=_('Name'), max_length=250)
+    last_name = models.CharField(verbose_name=_('Last name'), max_length=250)
     email = models.EmailField(
         _('Email Address'),
         error_messages={
@@ -28,11 +20,7 @@ class Doctor(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     )
 
     def __str__(self):
-        return '{0} {1} {2}'.format(
-            self.name,
-            self.last_name,
-            self.email
-        )
+        return '{0} {1} {2}'.format(self.name, self.last_name, self.email)
 
     class Meta:
         db_table = 'doctor'
@@ -44,16 +32,8 @@ class Doctor(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
 class Patient(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     """Represents patient info."""
 
-    name = models.CharField(
-        verbose_name=_('Name'),
-        max_length=250
-    )
-
-    last_name = models.CharField(
-        verbose_name=_('Last name'),
-        max_length=250
-    )
-
+    name = models.CharField(verbose_name=_('Name'), max_length=250)
+    last_name = models.CharField(verbose_name=_('Last name'), max_length=250)
     email = models.EmailField(
         _('Email Address'),
         error_messages={
@@ -61,18 +41,10 @@ class Patient(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
         },
         blank=True
     )
-
-    age = models.IntegerField(
-        verbose_name=_('Age on months'),
-        default=0,
-    )
+    age = models.IntegerField(verbose_name=_('Age on months'), default=0)
 
     def __str__(self):
-        return '{0} {1} {2}'.format(
-            self.name,
-            self.last_name,
-            self.email
-        )
+        return '{0} {1} {2}'.format(self.name, self.last_name, self.email)
 
     class Meta:
         db_table = 'patient'
@@ -84,35 +56,20 @@ class Patient(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
 class Appointment(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     """Represents the appointment info."""
 
-    doctor = models.ForeignKey(
-        'appointment.Doctor',
-        verbose_name=_('Assigned to'),
-        on_delete=models.PROTECT,
-        related_name='doctor_appointment',
-    )
+    doctor = models.ForeignKey('appointment.Doctor', verbose_name=_('Assigned to'), on_delete=models.PROTECT,
+                               related_name='doctor_appointment'
+                               )
 
-    patient = models.ForeignKey(
-        'appointment.Patient',
-        verbose_name=_('Requested by'),
-        on_delete=models.PROTECT,
-        related_name='patient_appointment',
-    )
+    patient = models.ForeignKey('appointment.Patient', verbose_name=_('Requested by'), on_delete=models.PROTECT,
+                                related_name='patient_appointment'
+                                )
 
-    appointment_time = models.DateTimeField(
-        verbose_name=_('Appointment time'),
-        blank=False
-    )
+    appointment_time = models.DateTimeField(verbose_name=_('Appointment time'), blank=False )
 
-    comments = models.TextField(
-        verbose_name=_('Comments')
-    )
+    comments = models.TextField(verbose_name=_('Comments'))
 
     def __str__(self):
-        return '{0} {1} - {2}'.format(
-            self.patient.name,
-            self.patient.last_name,
-            self.doctor.email
-        )
+        return '{0} {1} - {2}'.format(self.patient.name, self.patient.last_name, self.doctor.email)
 
     class Meta:
         db_table = 'appointment'

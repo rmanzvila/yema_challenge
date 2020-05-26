@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 
-from apps.appointment.models import Doctor, Appointment, Patient
+from apps.appointment.models import *
 
 
 class DoctorSerializer(serializers.ModelSerializer):

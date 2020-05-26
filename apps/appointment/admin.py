@@ -41,7 +41,7 @@ class PatientAdmin( admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin( admin.ModelAdmin):
-    """Defines the Patient admin."""
+    """Defines the appointment admin."""
 
     list_display = [
         'uuid',

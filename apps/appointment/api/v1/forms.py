@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 def found_doctor(value):
+    """Form validator for doctor uuid"""
     try:
         Doctor.objects.get(uuid=value)
     except Doctor.DoesNotExist:
@@ -16,6 +17,7 @@ def found_doctor(value):
 
 
 def found_patient(value):
+    """Form validator for patient uuid"""
     try:
         Patient.objects.get(uuid=value)
     except Patient.DoesNotExist:
@@ -24,6 +26,7 @@ def found_patient(value):
 
 
 class AppointmentForm(forms.Form):
+    """Form to create appointment from created patient."""
     doctor = forms.CharField(required=True, validators=[found_doctor])
     patient = forms.CharField(required=True, validators=[found_patient])
     appointment_time = forms.DateTimeField(required=True)
@@ -31,6 +34,7 @@ class AppointmentForm(forms.Form):
 
 
 class AppointmentCompleteForm(forms.Form):
+    """Form to create appointment from not created patient."""
     doctor = forms.CharField(required=True, validators=[found_doctor])
     name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
@@ -38,5 +42,3 @@ class AppointmentCompleteForm(forms.Form):
     age = forms.IntegerField(required=False)
     appointment_time = forms.DateTimeField(required=True)
     comments = forms.CharField(required=False)
-
-

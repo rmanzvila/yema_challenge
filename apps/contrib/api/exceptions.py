@@ -5,22 +5,10 @@ from rest_framework_simplejwt.exceptions import InvalidToken, AuthenticationFail
 
 from rest_framework import status
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import APIException, NotAuthenticated, _get_error_details  # noqa: WPS436
+from rest_framework.exceptions import APIException, NotAuthenticated# noqa: WPS436
 from django.utils.translation import ugettext_lazy as _
 
 from apps.contrib.response_codes import INVALID_TOKEN, AUTHENTICATION_FAILED
-
-
-class SimpleValidationError(APIException):
-    """Base class to raise API exceptions."""
-
-    status_code = status.HTTP_400_BAD_REQUEST
-
-    def __init__(self, detail=None, code=None, message=None):  # noqa: D107
-        detail = detail or message or self.default_detail
-        code = code or self.default_code
-
-        self.detail = _get_error_details(detail, code)
 
 
 class ServerError(APIException):

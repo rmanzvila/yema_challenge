@@ -2,7 +2,6 @@
 
 from rest_framework import status as status_code
 from rest_framework.response import Response
-
 from django.utils.translation import ugettext_lazy as _
 
 

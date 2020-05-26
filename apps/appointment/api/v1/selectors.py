@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from apps.appointment.models import Doctor, Appointment, Patient
+from apps.appointment.models import *
 
 
 class DoctorSelector(object):
     """Reflects all reading queries over doctors."""
-
     @classmethod
     def get_all(cls):
         return Doctor.objects.all()
