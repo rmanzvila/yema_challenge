@@ -70,3 +70,12 @@ tests:
 shell_prod:
 	@echo "Opening container bash session"
 	$(COMPOSE_PROD) run --rm django bash
+
+locales:
+	@echo "Opening a shell session"
+	$(COMPOSE) run --rm django python manage.py makemessages -l en
+	$(COMPOSE) run --rm django python manage.py makemessages -l es_MX
+
+compile_locales:
+	@echo "Opening a shell session"
+	$(COMPOSE) run --rm django python manage.py compilemessages
