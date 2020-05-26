@@ -35,8 +35,6 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.TemplateHTMLRenderer',
     ),
 
-    #'DEFAULT_PAGINATION_CLASS': 'apps.contrib.api.pagination.HeaderPagination',
-    #'PAGE_SIZE': 100,
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%SZ',

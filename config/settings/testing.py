@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""Test settings.
-
-- Used to run tests fast on the continuous integration server and locally
-"""
-
-
-
 from config.settings.components import env
 from config.settings.components.common import TEMPLATES
 
@@ -56,11 +49,10 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 
 # TEMPLATE LOADERS
 # ------------------------------------------------------------------------------
-# unnedded middlewares removed
+#
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
-
