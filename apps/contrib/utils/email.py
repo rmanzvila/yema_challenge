@@ -19,6 +19,7 @@ def send_email(subject, to, html_body):
 
 
 def generate_body(appointment):
+    """Create html body for email."""
     appointment_time = timezone.localtime(appointment.appointment_time)
     date_time = appointment_time.strftime("%m/%d/%Y, %H:%M:%S")
     return '<strong>{0}</strong>' \

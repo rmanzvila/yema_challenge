@@ -88,7 +88,7 @@ SITE_ID = 1
 
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-MX'
 TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_L10N = True

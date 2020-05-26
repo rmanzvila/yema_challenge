@@ -16,3 +16,13 @@ class DoneResponse(Response):  # noqa: D107
         }
         status = status or status_code.HTTP_200_OK
         super().__init__(data=response, status=status)
+
+
+class ErrorResponse(Response):
+
+    def __init__(self, code: str, message: str, error_status_code=status_code.HTTP_400_BAD_REQUEST):
+        data = {
+            'code': code,
+            'message': message
+        }
+        super(ErrorResponse, self).__init__(data=data, status=error_status_code)

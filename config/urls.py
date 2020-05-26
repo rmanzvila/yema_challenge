@@ -1,5 +1,5 @@
 # -*- encoding:utf-8 -*-
-
+from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -21,5 +21,6 @@ admin.site.unregister(Token)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html')),
+    path('api/', include('apps.appointment.api.urls', namespace="api-appointment")),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
