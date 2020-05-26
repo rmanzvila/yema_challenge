@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-25 20:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/appointment/admin.py:70 apps/appointment/admin.py:71
+#: apps/contrib/utils/email.py:36
+msgid "Doctor name"
+msgstr ""
+
+#: apps/appointment/admin.py:72 apps/appointment/admin.py:73
+#: apps/contrib/utils/email.py:33
+msgid "Patient name"
+msgstr ""
+
+#: apps/appointment/admin.py:81
+msgid "Appointment detail"
+msgstr ""
+
+#: apps/appointment/admin.py:84
+msgid "Emails sent: "
+msgstr ""
+
+#: apps/appointment/admin.py:86
+msgid "Send by email to patient"
+msgstr ""
+
+#: apps/appointment/api/v1/forms.py:15 apps/appointment/api/v1/forms.py:24
+msgid "Object not found"
+msgstr ""
+
+#: apps/appointment/apps.py:10
+msgid "Medical appointment"
+msgstr ""
+
+#: apps/appointment/apps.py:11
+msgid "Medical appointments"
+msgstr ""
+
+#: apps/appointment/models.py:11 apps/appointment/models.py:35
+msgid "Name"
+msgstr ""
+
+#: apps/appointment/models.py:12 apps/appointment/models.py:36
+msgid "Last name"
+msgstr ""
+
+#: apps/appointment/models.py:14 apps/appointment/models.py:38
+msgid "Email Address"
+msgstr ""
+
+#: apps/appointment/models.py:16 apps/appointment/models.py:40
+msgid "A user with that email already exists."
+msgstr ""
+
+#: apps/appointment/models.py:27
+msgid "Doctor"
+msgstr ""
+
+#: apps/appointment/models.py:28
+msgid "Doctors"
+msgstr ""
+
+#: apps/appointment/models.py:44
+msgid "Age on months"
+msgstr ""
+
+#: apps/appointment/models.py:51 apps/appointment/models.py:52
+msgid "Patient"
+msgstr ""
+
+#: apps/appointment/models.py:59
+msgid "Assigned to"
+msgstr ""
+
+#: apps/appointment/models.py:63
+msgid "Requested by"
+msgstr ""
+
+#: apps/appointment/models.py:67
+msgid "Appointment time"
+msgstr ""
+
+#: apps/appointment/models.py:69 apps/contrib/utils/email.py:41
+msgid "Comments"
+msgstr ""
+
+#: apps/appointment/models.py:76 apps/appointment/models.py:77
+msgid "Appointment"
+msgstr ""
+
+#: apps/contrib/api/exceptions.py:18
+msgid "Server error"
+msgstr ""
+
+#: apps/contrib/api/responses.py:13
+msgid "Successful operation!"
+msgstr ""
+
+#: apps/contrib/response_codes.py:8
+msgid "This TOKEN is invalid or EXPIRED"
+msgstr ""
+
+#: apps/contrib/response_codes.py:14
+msgid "The authentication process failed, try again."
+msgstr ""
+
+#: apps/contrib/utils/email.py:32
+msgid "Detail appointment"
+msgstr ""
+
+#: apps/contrib/utils/email.py:39
+msgid "Appointment date"
+msgstr ""
+
+#: apps/contrib/utils/mixins.py:25
+msgid "Created at"
+msgstr ""
+
+#: apps/contrib/utils/mixins.py:26
+msgid "Updated at"
+msgstr ""
+
+#: config/settings/components/common.py:98
+msgid "Spanish"
+msgstr ""
+
+#: config/settings/components/common.py:99
+msgid "English"
+msgstr ""
