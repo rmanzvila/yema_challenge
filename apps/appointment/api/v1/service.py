@@ -19,11 +19,10 @@ class AppointmentService:
 class PatientService:
     """ Provides methods to work with patients"""
     @classmethod
-    def create_patient(cls, name: str, last_name: str, email: str, age: int):
+    def create_patient(cls, name: str, last_name: str, email: str):
         patient = Patient.objects.create(
             name=name,
             last_name=last_name,
             email=email,
-            age=age
         )
         return patient

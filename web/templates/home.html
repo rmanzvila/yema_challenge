@@ -1,1 +1,232 @@
-<h2>Welcome default</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Yema Test Ricardo Manzanares Avila</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="app">
+    <v-app id="inspire">
+
+        <v-container class="grey lighten-5">
+            <v-row
+
+                    no-gutters
+            >
+                <v-col
+                >
+                    <v-btn
+                            color="success"
+                            class="mr-4"
+                    >
+                        Citas Médicas
+                    </v-btn>
+                </v-col>
+
+            </v-row>
+            <v-row
+
+                    no-gutters
+            >
+                <v-col
+                >
+                    <v-card
+                            class="pa-2"
+                            outlined
+                            tile
+                    >
+                        <v-form
+                                ref="form"
+                                v-model="valid"
+                                lazy-validation
+                        >
+                                <v-alert
+                                        type="success"
+                                        v-if="showSuccess"
+                                >
+                                    Cita registrada con exito
+                                </v-alert>
+
+                            <v-alert
+                                        type="danger"
+                                        v-if="showErrorNetwork"
+                                >
+                                    Ocurrio un error, intenta más tarde.
+                                </v-alert>
+
+                            <label v-if="!see_patients">Si el paciente ya se encuentra registrado, da click en el siguiente boton:</label>
+                            <label v-if="see_patients">Si se trata de un nuevo paciente, da click en el siguiente boton</label>
+                            <br>
+
+
+                            <v-alert
+                                    v-if="showErrorAlert"
+                                    type="error"
+                            >
+                                Es necesario incluir la información personal del paciente
+                            </v-alert>
+
+
+
+                             <v-btn
+                                     class="mr-4"
+                                  text
+                                  color="deep-purple"
+                                v-on:click="change_form"
+                                >
+                                  <label v-if="!see_patients">Paciente ya registrado</label>
+                                  <label v-if="see_patients">Paciente nuevo</label>
+                                </v-btn>
+
+
+                            <v-select
+                                    v-if="see_patients"
+                                    :items="patients"
+                                    label="Paciente"
+                                    item-text="full_name"
+                                    item-key="patients"
+                                    v-model="select_patients"
+                                    :rules="requiredRules"
+                                    return-object
+                                    required
+                            ></v-select>
+
+                            <v-text-field
+                                    v-if="!see_patients"
+                                    v-model="name"
+                                    :counter="120"
+                                    label="Nombre"
+                                    required
+                            ></v-text-field>
+
+                            <v-text-field
+                                    v-if="!see_patients"
+                                    v-model="lastname"
+                                    :counter="120"
+                                    label="Apellidos"
+                                    required
+                            ></v-text-field>
+
+                            <v-text-field
+                                    v-if="!see_patients"
+                                    v-model="email"
+                                    label="E-mail"
+                                    required
+                            ></v-text-field>
+
+
+                            <v-select
+                                    :items="doctors"
+                                    label="Doctor"
+                                    item-text="full_name"
+                                    item-key="doctors"
+                                    item-value="uuid"
+                                    v-model="select"
+                                    :rules="requiredRules"
+                                    return-object
+                                    required
+                            ></v-select>
+
+
+                            <v-textarea
+                                    v-model="comments"
+                                    autocomplete="comments"
+                                    label="Comentarios"
+                            ></v-textarea>
+
+                            <v-menu
+                                    ref="menu"
+                                    v-model="menu"
+                                    :close-on-content-click="false"
+                                    :return-value.sync="date"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="290px"
+                            >
+                                <template v-slot:activator="{ on }">
+                                    <v-text-field
+                                            v-model="date"
+                                            label="Seleccione la fecha"
+                                            readonly
+                                            v-on="on"
+                                            :rules="requiredRules"
+                                    ></v-text-field>
+                                </template>
+                                <v-date-picker v-model="date" no-title scrollable>
+                                    <v-spacer></v-spacer>
+                                    <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                                    <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                                </v-date-picker>
+                            </v-menu>
+
+                            <v-dialog
+                                    ref="dialog"
+                                    v-model="modal2"
+                                    :return-value.sync="time"
+                                    persistent
+                                    width="290px"
+                            >
+                                <template v-slot:activator="{ on }">
+                                    <v-text-field
+                                            v-model="time"
+                                            label="Selecciona la hora"
+                                            readonly
+                                            v-on="on"
+                                            :rules="requiredRules"
+                                    ></v-text-field>
+                                </template>
+                                <v-time-picker
+                                        v-if="modal2"
+                                        v-model="time"
+                                        full-width
+                                >
+                                    <v-spacer></v-spacer>
+                                    <v-btn text color="primary" @click="modal2 = false">Cancel</v-btn>
+                                    <v-btn text color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
+                                </v-time-picker>
+                            </v-dialog>
+
+
+                            <v-btn
+                                    :disabled="!valid"
+                                    color="success"
+                                    class="mr-4"
+                                    @click="validate"
+                            >
+                                Enviar
+                            </v-btn>
+
+                            <v-btn
+                                    color="error"
+                                    class="mr-4"
+                                    @click="reset"
+                            >
+                                Limpiar formulario
+                            </v-btn>
+
+
+                        </v-form>
+
+
+                    </v-card>
+                </v-col>
+
+            </v-row>
+        </v-container>
+
+
+    </v-app>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+</body>
+{% load static %}
+<script src="{% static "frontend/index.js" %}"></script>
+</html>

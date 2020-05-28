@@ -41,7 +41,6 @@ class Patient(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
         },
         blank=True
     )
-    age = models.IntegerField(verbose_name=_('Age on months'), default=0)
 
     def __str__(self):
         return '{0} {1} {2}'.format(self.name, self.last_name, self.email)

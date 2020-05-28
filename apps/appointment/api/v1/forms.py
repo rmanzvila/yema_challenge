@@ -39,6 +39,5 @@ class AppointmentCompleteForm(forms.Form):
     name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
-    age = forms.IntegerField(required=True)
     appointment_time = forms.DateTimeField(required=True)
     comments = forms.CharField(required=False)

@@ -2,6 +2,7 @@
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework_api_key.permissions import HasAPIKey
 
 from apps.appointment.api.v1.forms import AppointmentForm, AppointmentCompleteForm
 from apps.appointment.api.v1.selectors import *
@@ -48,8 +49,7 @@ class AppointmentView(APIView):
 class AppointmentCompleteView(APIView):
     """Process the requests for appointment."""
 
-    #permission_classes = [IsAuthenticated, ]
-    permission_classes = []
+    permission_classes = [HasAPIKey]
 
     def post(self, request):
         """POST /api/v1/appointments/register"""
@@ -58,7 +58,7 @@ class AppointmentCompleteView(APIView):
             return ErrorResponse('api.appointment.invalid_input', form.errors)
 
         patient = PatientService.create_patient(
-            form.data['name'], form.data['last_name'], form.data['email'], form.data['age']
+            form.data['name'], form.data['last_name'], form.data['email']
         )
         appointment = AppointmentService.create_appointment(
             form.data['doctor'], patient.uuid, form.data['appointment_time'], form.data['comments']

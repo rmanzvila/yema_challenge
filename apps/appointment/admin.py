@@ -31,12 +31,10 @@ class PatientAdmin( admin.ModelAdmin):
         'name',
         'last_name',
         'email',
-        'age',
         'created_at',
         'updated_at'
     ]
     search_fields = ('uuid', 'name', 'last_name', 'email')
-    list_filter = ('age',)
 
 
 @admin.register(Appointment)

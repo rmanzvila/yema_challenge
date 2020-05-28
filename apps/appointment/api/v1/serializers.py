@@ -6,6 +6,7 @@ from apps.appointment.models import *
 
 class DoctorSerializer(serializers.ModelSerializer):
     """Helps to print the doctor info."""
+    full_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Doctor
@@ -14,11 +15,16 @@ class DoctorSerializer(serializers.ModelSerializer):
             'name',
             'last_name',
             'email',
+            'full_name'
         )
+
+    def get_full_name(self, obj):
+        return '{0} {1}'.format(obj.name, obj.last_name)
 
 
 class PatientSerializer(serializers.ModelSerializer):
     """Helps to print the patient info."""
+    full_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Patient
@@ -27,8 +33,12 @@ class PatientSerializer(serializers.ModelSerializer):
             'name',
             'last_name',
             'email',
-            'age',
+            'full_name'
         )
+
+    def get_full_name(self, obj):
+        return '{0} {1}'.format(obj.name, obj.last_name)
+
 
 
 class AppointmentSerializer(serializers.ModelSerializer):
