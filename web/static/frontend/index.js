@@ -12,46 +12,34 @@ Vue.component('form-component', {
                             Ocurrio un error, intenta más tarde.
                         </v-alert>
         
-                        <label v-if="!see_patients">Si el paciente ya se encuentra registrado, da click en el siguiente
-                            boton:</label>
+                        <label v-if="!see_patients">Si el paciente ya se encuentra registrado, da click en el siguiente boton:</label>
                         <label v-if="see_patients">Si se trata de un nuevo paciente, da click en el siguiente boton</label>
                         <br>
-        
         
                         <v-alert v-if="showErrorAlert" type="error">
                             Es necesario incluir la información personal del paciente
                         </v-alert>
-        
         
                         <v-btn class="mr-4" text color="deep-purple" v-on:click="change_form">
                             <label v-if="!see_patients">Paciente ya registrado</label>
                             <label v-if="see_patients">Paciente nuevo</label>
                         </v-btn>
         
-        
-                        <v-select v-if="see_patients" :items="patients" label="Paciente" item-text="full_name"
-                                  item-key="patients" v-model="select_patients" :rules="requiredRules" return-object
-                                  required></v-select>
+                        <v-select v-if="see_patients" :items="patients" label="Paciente" item-text="full_name" item-key="patients" v-model="select_patients" :rules="requiredRules" return-objectrequired></v-select>
         
                         <v-text-field v-if="!see_patients" v-model="name" :counter="120" label="Nombre" required></v-text-field>
         
-                        <v-text-field v-if="!see_patients" v-model="lastname" :counter="120" label="Apellidos"
-                                      required></v-text-field>
+                        <v-text-field v-if="!see_patients" v-model="lastname" :counter="120" label="Apellidos" required></v-text-field>
         
                         <v-text-field v-if="!see_patients" v-model="email" label="E-mail" required></v-text-field>
         
-        
-                        <v-select :items="doctors" label="Doctor" item-text="full_name" item-key="doctors" item-value="uuid"
-                                  v-model="select" :rules="requiredRules" return-object required></v-select>
-        
+                        <v-select :items="doctors" label="Doctor" item-text="full_name" item-key="doctors" item-value="uuid" v-model="select" :rules="requiredRules" return-object required></v-select>
         
                         <v-textarea v-model="comments" autocomplete="comments" label="Comentarios"></v-textarea>
         
-                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date"
-                                transition="scale-transition" offset-y min-width="290px">
+                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="290px">
                             <template v-slot:activator="{ on }">
-                                <v-text-field v-model="date" label="Seleccione la fecha" readonly v-on="on"
-                                              :rules="requiredRules"></v-text-field>
+                                <v-text-field v-model="date" label="Seleccione la fecha" readonly v-on="on" :rules="requiredRules"></v-text-field>
                             </template>
                             <v-date-picker v-model="date" no-title scrollable>
                                 <v-spacer></v-spacer>
@@ -62,8 +50,7 @@ Vue.component('form-component', {
         
                         <v-dialog ref="dialog" v-model="modal2" :return-value.sync="time" persistent width="290px">
                             <template v-slot:activator="{ on }">
-                                <v-text-field v-model="time" label="Selecciona la hora" readonly v-on="on"
-                                              :rules="requiredRules"></v-text-field>
+                                <v-text-field v-model="time" label="Selecciona la hora" readonly v-on="on" :rules="requiredRules"></v-text-field>
                             </template>
                             <v-time-picker v-if="modal2" v-model="time" full-width>
                                 <v-spacer></v-spacer>
@@ -71,7 +58,6 @@ Vue.component('form-component', {
                                 <v-btn text color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
                             </v-time-picker>
                         </v-dialog>
-        
         
                         <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
                             Enviar
