@@ -54,11 +54,3 @@ class AppointmentFormTests(TestCase):
         self.assertEqual(form.errors, {
             'patient': [_('Object not found')],
         })
-
-    # def test_blank_data(self):
-    #     form = ResetPasswordForm(data={})
-    #     self.assertFalse(form.is_valid())
-    #     self.assertEqual(form.errors, {
-    #         'password1': [_("This field is required.")],
-    #         'password2': [_("This field is required.")],
-    #     })
