@@ -48,7 +48,7 @@ class Patient(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     class Meta:
         db_table = 'patient'
         verbose_name = _('Patient')
-        verbose_name_plural = _('Patient')
+        verbose_name_plural = _('Patients')
         app_label = 'appointment'
 
 
@@ -73,6 +73,6 @@ class Appointment(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
     class Meta:
         db_table = 'appointment'
         verbose_name = _('Appointment')
-        verbose_name_plural = _('Appointment')
+        verbose_name_plural = _('Appointments')
         app_label = 'appointment'
         ordering = ['-created_at']

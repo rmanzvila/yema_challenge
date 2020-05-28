@@ -79,3 +79,10 @@ locales:
 compile_locales:
 	@echo "Opening a shell session"
 	$(COMPOSE) run --rm django python manage.py compilemessages
+
+coverage:
+	$(COMPOSE_TEST) run django coverage run -m pytest
+	$(COMPOSE_TEST) run --rm django coverage html
+	$(COMPOSE_TEST) run --rm django coverage report
+	$(COMPOSE_TEST) run --rm django rm -f web/badges/coverage.svg
+	$(COMPOSE_TEST) run --rm django coverage-badge -o web/badges/coverage.svg
