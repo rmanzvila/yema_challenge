@@ -4,6 +4,11 @@ from rest_framework import serializers
 from apps.appointment.models import *
 
 
+class ApiKeySerializer(serializers.Serializer):
+    """Helps to print the api key info."""
+    api_key = serializers.CharField()
+
+
 class DoctorSerializer(serializers.ModelSerializer):
     """Helps to print the doctor info."""
     full_name = serializers.SerializerMethodField()

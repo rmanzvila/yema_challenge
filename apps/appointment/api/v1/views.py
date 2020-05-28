@@ -7,15 +7,22 @@ from rest_framework_api_key.permissions import HasAPIKey
 from apps.appointment.api.v1.forms import AppointmentForm, AppointmentCompleteForm
 from apps.appointment.api.v1.selectors import *
 from apps.appointment.api.v1.serializers import *
-from apps.appointment.api.v1.service import AppointmentService, PatientService
+from apps.appointment.api.v1.service import AppointmentService, PatientService, ApiKeyService
 from apps.contrib.api.responses import ErrorResponse
+
+
+class ApiKeyView(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        """GET /api/v1/access/"""
+        api_key = ApiKeyService.generate_key()
+        return Response(ApiKeySerializer(api_key, many=False).data)
 
 
 class DoctorView(APIView):
     """Process the requests for doctors."""
-
-    #permission_classes = [IsAuthenticated, ]
-    permission_classes = []
+    permission_classes = [HasAPIKey]
 
     def get(self, request):
         """GET /api/v1/doctors/"""
@@ -25,9 +32,7 @@ class DoctorView(APIView):
 
 class AppointmentView(APIView):
     """Process the requests for appointment."""
-
-    #permission_classes = [IsAuthenticated, ]
-    permission_classes = []
+    permission_classes = [HasAPIKey]
 
     def get(self, request):
         """GET /api/v1/appointments/"""
@@ -48,7 +53,6 @@ class AppointmentView(APIView):
 
 class AppointmentCompleteView(APIView):
     """Process the requests for appointment."""
-
     permission_classes = [HasAPIKey]
 
     def post(self, request):
@@ -68,9 +72,7 @@ class AppointmentCompleteView(APIView):
 
 class PatientView(APIView):
     """Process the requests for patients."""
-
-    #permission_classes = [IsAuthenticated, ]
-    permission_classes = []
+    permission_classes = [HasAPIKey]
 
     def get(self, request):
         """GET /api/v1/patients/"""

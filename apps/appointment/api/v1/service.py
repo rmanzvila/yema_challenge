@@ -1,4 +1,7 @@
 # -*- encoding:utf-8 -*-
+import time
+
+from rest_framework_api_key.models import APIKey
 
 from apps.appointment.models import Appointment, Patient
 
@@ -26,3 +29,11 @@ class PatientService:
             email=email,
         )
         return patient
+
+
+class ApiKeyService:
+    """Provides methods to get/generate an apikey"""
+    @classmethod
+    def generate_key(cls):
+        _api_key, key = APIKey.objects.create_key(name="%s" % (int(time.time())))
+        return {'api_key': key}

@@ -1,3 +1,4 @@
+
 Vue.component('form-component', {
     template: `
         <v-row no-gutters>
@@ -72,9 +73,8 @@ Vue.component('form-component', {
             </v-col>
         </v-row>
     `,
-        mounted() {
-        this.get_doctors()
-        this.get_patients()
+    mounted() {
+        this.generate_key()
     },
     data: () => ({
         valid: true,
@@ -98,6 +98,8 @@ Vue.component('form-component', {
         showErrorAlert: false,
         showSuccess: false,
         showErrorNetwork: false,
+        api_key: '',
+        api_headers: ''
     }),
     methods: {
         validate() {
@@ -141,11 +143,7 @@ Vue.component('form-component', {
                     appointment_time: this.$data.date + ' ' + this.$data.time,
                     comments: this.$data.comments
                 },
-                headers: {
-                    'Content-type': 'application/json; charset=utf-8',
-                    'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    'Authorization': 'Api-Key NaQmxOc0.UOPyJQphvci1T0Clwaa4msiYjm5CURSy'
-                }
+                headers: this.api_headers.headers
             })
                 .then(response => {
                     this.showSuccess = true
@@ -174,11 +172,7 @@ Vue.component('form-component', {
                     appointment_time: this.$data.date + ' ' + this.$data.time,
                     comments: this.$data.comments
                 },
-                headers: {
-                    'Content-type': 'application/json; charset=utf-8',
-                    'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    'Authorization': 'Api-Key NaQmxOc0.UOPyJQphvci1T0Clwaa4msiYjm5CURSy'
-                }
+                headers: this.api_headers.headers
             })
                 .then(response => {
                     this.showSuccess = true
@@ -196,11 +190,11 @@ Vue.component('form-component', {
             })
         },
         get_doctors() {
-            axios.get(window.location.href + 'api/v1/doctors')
+            axios.get(window.location.href + 'api/v1/doctors', this.api_headers)
                 .then(response => (this.doctors = response.data.response));
         },
         get_patients() {
-            axios.get(window.location.href + 'api/v1/patients')
+            axios.get(window.location.href + 'api/v1/patients', this.api_headers)
                 .then(response => (this.patients = response.data.response))
         },
         validate_form() {
@@ -211,8 +205,24 @@ Vue.component('form-component', {
                 return false
             }
             return true
+        },
+        generate_key(){
+            axios.get(window.location.href + 'api/v1/access')
+                .then(response => {
+                    this.api_key = response.data.response.api_key
+                    this.api_headers = {
+                        headers: {
+                                'Content-type': 'application/json; charset=utf-8',
+                                'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                                'Authorization': 'Api-Key '+ this.api_key
+                        }
+                    }
+                }).then(x=> (this.get_catalogs()))
+        },
+        get_catalogs(){
+            this.get_doctors()
+            this.get_patients()
         }
-
     },
 })
 
@@ -223,7 +233,15 @@ Vue.component('main-component', {
                 <v-row no-gutters>
                     <v-col>
                         <v-btn color="success" class="mr-4">
-                            Citas Médicas
+                            Nueva cita médica
+                        </v-btn>
+                        <br>
+                        <br>
+                        <v-divider></v-divider>
+                    </v-col>
+                    <v-col>
+                        <v-btn color="info" class="mr-4" href="/admin">
+                            Ir al Admin
                         </v-btn>
                         <br>
                         <br>
