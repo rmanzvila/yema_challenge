@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-25 20:22-0500\n"
+"POT-Creation-Date: 2020-05-28 21:27-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,29 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/appointment/admin.py:70 apps/appointment/admin.py:71
+#: apps/appointment/admin.py:68 apps/appointment/admin.py:69
 #: apps/contrib/utils/email.py:36
 msgid "Doctor name"
 msgstr ""
 
-#: apps/appointment/admin.py:72 apps/appointment/admin.py:73
+#: apps/appointment/admin.py:70 apps/appointment/admin.py:71
 #: apps/contrib/utils/email.py:33
 msgid "Patient name"
 msgstr ""
 
-#: apps/appointment/admin.py:81
+#: apps/appointment/admin.py:79
 msgid "Appointment detail"
 msgstr ""
 
-#: apps/appointment/admin.py:84
+#: apps/appointment/admin.py:82
 msgid "Emails sent: "
 msgstr ""
 
-#: apps/appointment/admin.py:86
+#: apps/appointment/admin.py:84
 msgid "Send by email to patient"
 msgstr ""
 
 #: apps/appointment/api/v1/forms.py:15 apps/appointment/api/v1/forms.py:24
+#: apps/appointment/tests/unit/test_forms.py:45
+#: apps/appointment/tests/unit/test_forms.py:58
 msgid "Object not found"
 msgstr ""
 
@@ -69,39 +71,49 @@ msgid "A user with that email already exists."
 msgstr ""
 
 #: apps/appointment/models.py:27
+#: apps/appointment/tests/unit/models/test_doctor_model.py:23
 msgid "Doctor"
 msgstr ""
 
 #: apps/appointment/models.py:28
+#: apps/appointment/tests/unit/models/test_doctor_model.py:27
 msgid "Doctors"
 msgstr ""
 
-#: apps/appointment/models.py:44
-msgid "Age on months"
-msgstr ""
-
-#: apps/appointment/models.py:51 apps/appointment/models.py:52
+#: apps/appointment/models.py:50
+#: apps/appointment/tests/unit/models/test_patient_model.py:25
 msgid "Patient"
 msgstr ""
 
-#: apps/appointment/models.py:59
+#: apps/appointment/models.py:51
+#: apps/appointment/tests/unit/models/test_patient_model.py:29
+msgid "Patients"
+msgstr ""
+
+#: apps/appointment/models.py:58
 msgid "Assigned to"
 msgstr ""
 
-#: apps/appointment/models.py:63
+#: apps/appointment/models.py:62
 msgid "Requested by"
 msgstr ""
 
-#: apps/appointment/models.py:67
+#: apps/appointment/models.py:66
 msgid "Appointment time"
 msgstr ""
 
-#: apps/appointment/models.py:69 apps/contrib/utils/email.py:41
+#: apps/appointment/models.py:68 apps/contrib/utils/email.py:41
 msgid "Comments"
 msgstr ""
 
-#: apps/appointment/models.py:76 apps/appointment/models.py:77
+#: apps/appointment/models.py:75
+#: apps/appointment/tests/unit/models/test_appointment_model.py:28
 msgid "Appointment"
+msgstr ""
+
+#: apps/appointment/models.py:76
+#: apps/appointment/tests/unit/models/test_appointment_model.py:32
+msgid "Appointments"
 msgstr ""
 
 #: apps/contrib/api/exceptions.py:18
@@ -136,10 +148,10 @@ msgstr ""
 msgid "Updated at"
 msgstr ""
 
-#: config/settings/components/common.py:98
+#: config/settings/components/common.py:101
 msgid "Spanish"
 msgstr ""
 
-#: config/settings/components/common.py:99
+#: config/settings/components/common.py:102
 msgid "English"
 msgstr ""
