@@ -32,3 +32,6 @@ After that, run in the next order to generate a correct enviroment:
   * `make test` running the command to check the tests.
   * `make coverage` generate a report about coverage in a folder `htmlcov`, where can check index.html file to get a resumen.
 
+
+### Features on project
+ * 
