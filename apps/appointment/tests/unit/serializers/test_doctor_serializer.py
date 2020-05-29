@@ -1,9 +1,9 @@
 import pytest
 from django.test import TestCase
+from faker import Factory
 
 from apps.appointment.api.v1.serializers import DoctorSerializer
 
-from faker import Factory
 fake = Factory.create()
 
 
@@ -22,5 +22,3 @@ class DoctorTestSerializer(TestCase):
     def test_invalid_serializer(self):
         serializer = DoctorSerializer(data={})
         self.assertFalse(serializer.is_valid())
-
-

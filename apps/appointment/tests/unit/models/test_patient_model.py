@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 import pytest
-
+from django.utils.translation import ugettext_lazy as _
 from doubles.unittest import TestCase
 
 from apps.appointment.models import Doctor, Patient
 from apps.appointment.tests.factories.doctor import DoctorFactory
-from django.utils.translation import ugettext_lazy as _
-
 from apps.appointment.tests.factories.patient import PatientFactory
 
 

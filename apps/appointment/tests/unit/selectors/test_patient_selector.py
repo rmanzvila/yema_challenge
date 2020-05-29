@@ -1,9 +1,8 @@
+import pytest
 from django.test import TestCase
 
-import pytest
-from apps.appointment.api.v1.selectors import PatientSelector, Patient
+from apps.appointment.api.v1.selectors import Patient, PatientSelector
 from apps.appointment.tests.factories.patient import PatientFactory
-
 
 
 @pytest.mark.django_db

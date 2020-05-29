@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
+
 import factory
+from django.utils.timezone import utc
 from faker import Factory
 
-from datetime import datetime
-from django.utils.timezone import utc
-
-from apps.appointment.models import Doctor, Appointment
+from apps.appointment.models import Appointment, Doctor
 
 fake = Factory.create()
 

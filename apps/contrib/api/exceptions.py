@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
-from rest_framework_simplejwt.exceptions import InvalidToken, AuthenticationFailed
-
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import APIException, NotAuthenticated# noqa: WPS436
-from django.utils.translation import ugettext_lazy as _
+from rest_framework.exceptions import (APIException, NotAuthenticated)
+from rest_framework_simplejwt.exceptions import (AuthenticationFailed,
+                                                 InvalidToken)
 
-from apps.contrib.response_codes import INVALID_TOKEN, AUTHENTICATION_FAILED
+from apps.contrib.response_codes import AUTHENTICATION_FAILED, INVALID_TOKEN
 
 
 class ServerError(APIException):
@@ -23,7 +23,11 @@ class SimpleJWTExceptionParser(object):
 
     @classmethod
     def parse(cls, exc):
-        _new_exc = exc
+        new_exc = exc
+        if isinstance(exc, InvalidToken):
+            new_exc = NotAuthenticated(**INVALID_TOKEN)
+        elif isinstance(exc, AuthenticationFailed):
+            new_exc = NotAuthenticated(**AUTHENTICATION_FAILED)
         return NotAuthenticated(**AUTHENTICATION_FAILED)
 
 

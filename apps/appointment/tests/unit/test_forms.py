@@ -1,17 +1,16 @@
 import datetime
+from datetime import datetime
 
 import pytest
+from django.utils.timezone import utc
+from django.utils.translation import ugettext_lazy as _
 from doubles.unittest import TestCase
+from faker import Factory
 
 from apps.appointment.api.v1.forms import AppointmentForm
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
-from django.utils.translation import ugettext_lazy as _
 
-from datetime import datetime
-from django.utils.timezone import utc
-
-from faker import Factory
 fake = Factory.create()
 
 

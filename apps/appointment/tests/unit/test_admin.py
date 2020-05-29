@@ -1,6 +1,9 @@
+from datetime import datetime
+
 from django.contrib import messages
-from django.test import TestCase
 from django.contrib.admin.sites import AdminSite
+from django.test import TestCase
+from django.utils.timezone import utc
 from doubles import allow
 
 from apps.appointment.admin import AppointmentAdmin
@@ -9,9 +12,6 @@ from apps.appointment.tests.factories.appointment import AppointmentFactory
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
 
-
-from datetime import datetime
-from django.utils.timezone import utc
 
 class MockRequest(object):
     pass

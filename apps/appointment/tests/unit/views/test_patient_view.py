@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from django.urls import reverse
-
 import pytest
+from django.urls import reverse
 from rest_framework_api_key.models import APIKey
 
 from apps.appointment.api.v1.serializers import DoctorSerializer

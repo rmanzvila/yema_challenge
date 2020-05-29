@@ -1,10 +1,9 @@
 
+import pytest
 from django.test import TestCase
 
-import pytest
-
-from apps.appointment.api.v1.selectors import  AppointmentSelector
-from apps.appointment.models import Doctor, Appointment
+from apps.appointment.api.v1.selectors import AppointmentSelector
+from apps.appointment.models import Appointment, Doctor
 from apps.appointment.tests.factories.appointment import AppointmentFactory
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
@@ -32,4 +31,3 @@ class AppointmentSelectorTests(TestCase):
         self.assertEqual(first_appointment.patient.name, self.patient.name)
         self.assertEqual(first_appointment.patient.last_name, self.patient.last_name)
         self.assertEqual(first_appointment.patient.email, self.patient.email)
-

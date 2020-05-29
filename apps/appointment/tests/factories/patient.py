@@ -2,10 +2,8 @@
 from datetime import time
 
 import factory
-from faker import Factory
-
 from django.contrib.gis.geos import Point
-
+from faker import Factory
 
 from apps.appointment.models import Doctor, Patient
 

@@ -14,5 +14,3 @@ class ApikeyTestSerializer(TestCase):
     def test_invalid_serializer(self):
         serializer = ApiKeySerializer(data={})
         self.assertFalse(serializer.is_valid())
-
-

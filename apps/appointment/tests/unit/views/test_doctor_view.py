@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import pytest
 from django.urls import reverse
 
-import pytest
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.contrib.utils.mixins import BaseAPITestCase
 

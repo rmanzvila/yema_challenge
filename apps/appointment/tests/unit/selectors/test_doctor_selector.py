@@ -1,8 +1,7 @@
 import uuid
 
-from django.test import TestCase
-
 import pytest
+from django.test import TestCase
 
 from apps.appointment.api.v1.selectors import DoctorSelector
 from apps.appointment.models import Doctor

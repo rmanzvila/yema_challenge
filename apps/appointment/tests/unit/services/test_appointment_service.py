@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from django.test import TestCase
+from datetime import datetime
 
 import pytest
+from django.test import TestCase
+from django.utils.timezone import utc
 
 from apps.appointment.api.v1.service import AppointmentService
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
-from datetime import datetime
-from django.utils.timezone import utc
+
 
 @pytest.mark.django_db
 class AppointmentServiceTests(TestCase):

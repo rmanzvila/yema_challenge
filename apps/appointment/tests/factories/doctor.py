@@ -3,6 +3,7 @@ from datetime import time
 
 import factory
 from faker import Factory
+
 from apps.appointment.models import Doctor
 
 fake = Factory.create()

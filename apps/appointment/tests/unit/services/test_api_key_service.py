@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from django.test import TestCase
+from datetime import datetime
 
 import pytest
+from django.test import TestCase
+from django.utils.timezone import utc
+from faker import Factory
 
-from apps.appointment.api.v1.service import AppointmentService, PatientService, ApiKeyService
+from apps.appointment.api.v1.service import (ApiKeyService, AppointmentService,
+                                             PatientService)
 from apps.appointment.models import Appointment
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
-from datetime import datetime
-from django.utils.timezone import utc
 
-from faker import Factory
 fake = Factory.create()
 
 
@@ -23,4 +24,3 @@ class ApiKeyServiceTests(TestCase):
 
         self.assertIsInstance(api_key, dict)
         self.assertEquals(api_key.keys(), {'api_key',})
-
