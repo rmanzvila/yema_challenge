@@ -15,11 +15,14 @@ Run in the next order to generate a correct enviroment:
 
 
 #### Basic commands
-  * `make build` build the images for development. 
-  * `make server` run dev server.
-  * `make django` enable deebugging server `debug`.
-  * `make migrations` run django makemigrations command
-  * `make migrate` run django migrate command
-  * `make superuser` make a superuserfor develoment
+  * `create_network` Create a network for process.
   * `make build` build the images for development.
+  * `make migrations` run django make migrations command
+  * `make migrate` run django migrate command 
+  * `make superuser` make a superuser for develoment.
+  * `make up` up the server using unicorn and nginx.
+  
+### For other components  
+  * `make test` running the command to check the tests.
+  * `make coverage` generate a report about coverage in a folder.
 

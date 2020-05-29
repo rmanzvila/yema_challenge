@@ -19,6 +19,10 @@ help:
 	@echo "  - coverage			            Run coverage report"
 
 
+create_network:
+	@echo "Create a docker network ..."
+	docker network create django_network
+
 build:
 	@echo "Server django up..."
 	$(COMPOSE_PROD) build
@@ -31,10 +35,6 @@ clean:
 	@echo "Cleaning containers ..."
 	docker ps -aq | xargs docker stop
 	docker ps -aq | xargs docker rm
-
-create_network:
-	@echo "Create a docker network ..."
-	docker network create django_network
 
 
 migrations:
@@ -72,3 +72,7 @@ coverage:
 	$(COMPOSE_TEST) run --rm django coverage report
 	$(COMPOSE_TEST) run --rm django rm -f web/badges/coverage.svg
 	$(COMPOSE_TEST) run --rm django coverage-badge -o web/badges/coverage.svg
+
+flushdb:
+	@echo "Flushing database ..."
+	$(COMPOSE_PROD) run --rm django python manage.py flush
