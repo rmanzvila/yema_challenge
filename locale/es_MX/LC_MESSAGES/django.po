@@ -87,8 +87,6 @@ msgstr "Paciente"
 
 #: apps/appointment/models.py:51
 #: apps/appointment/tests/unit/models/test_patient_model.py:29
-#, fuzzy
-#| msgid "Patient"
 msgid "Patients"
 msgstr "Pacientes"
 
@@ -115,8 +113,6 @@ msgstr "Cita medica"
 
 #: apps/appointment/models.py:76
 #: apps/appointment/tests/unit/models/test_appointment_model.py:32
-#, fuzzy
-#| msgid "Appointment"
 msgid "Appointments"
 msgstr "Cita medica"
 

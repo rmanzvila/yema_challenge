@@ -76,3 +76,4 @@ coverage:
 flushdb:
 	@echo "Flushing database ..."
 	$(COMPOSE_PROD) run --rm django python manage.py flush
+
