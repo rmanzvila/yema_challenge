@@ -2,7 +2,6 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-
 INVALID_TOKEN = {
     'code': 'invalid_token',
     'detail': _('This TOKEN is invalid or EXPIRED'),

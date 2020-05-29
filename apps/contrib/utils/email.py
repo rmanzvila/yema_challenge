@@ -2,8 +2,8 @@
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 
 
 def send_email(subject, to, html_body):

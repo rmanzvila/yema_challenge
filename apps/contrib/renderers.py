@@ -2,12 +2,11 @@
 
 from __future__ import unicode_literals
 
+from datetime import datetime
 
+from django.utils.timezone import utc
 from rest_framework.renderers import JSONRenderer
 from rest_framework.utils.encoders import JSONEncoder
-
-from datetime import datetime
-from django.utils.timezone import utc
 
 
 class SafeJSONEncoder(JSONEncoder):
