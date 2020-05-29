@@ -9,12 +9,12 @@ For the full list of settings and their config, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-from typing import Dict, List, Tuple, Union
 from os.path import join
-
-from config.settings.components import PROJECT_PATH, env
+from typing import Dict, List, Tuple, Union
 
 from django.utils.translation import ugettext_lazy as _
+
+from config.settings.components import PROJECT_PATH, env
 
 ADMINS = (
     ('Support', 'rmanzvila@gmail.com'),

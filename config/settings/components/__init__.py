@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from os.path import join, dirname
+from os.path import dirname, join
 
 from environ import environ
 

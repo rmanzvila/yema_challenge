@@ -10,7 +10,7 @@ import socket
 from typing import List
 
 from config.settings.components import env
-from config.settings.components.common import TEMPLATES, INSTALLED_APPS
+from config.settings.components.common import INSTALLED_APPS, TEMPLATES
 
 DEBUG = False
 
