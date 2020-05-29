@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib import admin
-from apps.appointment.models import Doctor, Patient, Appointment
+from django.contrib import admin, messages
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
-from apps.contrib.utils.email import send_email, generate_body
+
+from apps.appointment.models import Appointment, Doctor, Patient
+from apps.contrib.utils.email import generate_body, send_email
 
 
 @admin.register(Doctor)
@@ -83,4 +83,3 @@ class AppointmentAdmin( admin.ModelAdmin):
 
     send_by_email.short_description = _('Send by email to patient')
     actions = ['send_by_email', ]
-

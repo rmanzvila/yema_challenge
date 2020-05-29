@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from apps.contrib.utils.mixins import UUIDPrimaryKeyModelMixin, TimeStampedModelMixin
 from django.utils.translation import ugettext_lazy as _
+
+from apps.contrib.utils.mixins import (TimeStampedModelMixin,
+                                       UUIDPrimaryKeyModelMixin)
 
 
 class Doctor(UUIDPrimaryKeyModelMixin, TimeStampedModelMixin):
