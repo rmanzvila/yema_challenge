@@ -34,7 +34,7 @@ msgstr "Detalle de cita medica"
 
 #: apps/appointment/admin.py:82
 msgid "Emails sent: "
-msgstr "Correos electronicos enviados"
+msgstr "Correos electronicos enviados: "
 
 #: apps/appointment/admin.py:84
 msgid "Send by email to patient"
@@ -114,7 +114,7 @@ msgstr "Cita medica"
 #: apps/appointment/models.py:76
 #: apps/appointment/tests/unit/models/test_appointment_model.py:32
 msgid "Appointments"
-msgstr "Cita medica"
+msgstr "Citas medicas"
 
 #: apps/contrib/api/exceptions.py:18
 msgid "Server error"
