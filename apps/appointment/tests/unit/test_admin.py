@@ -43,4 +43,3 @@ class AppAdminTest(TestCase):
         self.assertIsInstance(name, str)
         self.assertEqual(name, '{0} {1}'.format(
             self.appointment.patient.name, self.appointment.patient.last_name))
-
