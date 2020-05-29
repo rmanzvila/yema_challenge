@@ -1,4 +1,5 @@
 # Yema challenge
+![Coverage](web/badges/coverage.svg)
 
 #### Technologies
 
