@@ -10,6 +10,9 @@ from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
 
 
+from datetime import datetime
+from django.utils.timezone import utc
+
 class MockRequest(object):
     pass
 

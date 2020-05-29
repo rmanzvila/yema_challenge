@@ -8,6 +8,9 @@ from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
 from django.utils.translation import ugettext_lazy as _
 
+from datetime import datetime
+from django.utils.timezone import utc
+
 from faker import Factory
 fake = Factory.create()
 
@@ -24,7 +27,7 @@ class AppointmentFormTests(TestCase):
             'doctor': self.doctor.uuid,
             'patient': self.patient.uuid,
             'comments': 'comments',
-            'appointment_time': datetime.datetime.now()
+            'appointment_time': datetime.utcnow().replace(tzinfo=utc)
         }
         form = AppointmentForm(data=data)
         self.assertTrue(form.is_valid())
@@ -34,7 +37,7 @@ class AppointmentFormTests(TestCase):
             'doctor': fake.uuid4(),
             'patient': self.patient.uuid,
             'comments': 'comments',
-            'appointment_time': datetime.datetime.now()
+            'appointment_time': datetime.utcnow().replace(tzinfo=utc)
         }
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
@@ -47,7 +50,7 @@ class AppointmentFormTests(TestCase):
             'doctor': self.doctor.uuid,
             'patient': fake.uuid4(),
             'comments': 'comments',
-            'appointment_time': datetime.datetime.now()
+            'appointment_time': datetime.utcnow().replace(tzinfo=utc)
         }
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
