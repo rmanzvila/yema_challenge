@@ -18,7 +18,6 @@ services:
     image: django_api_development
     depends_on:
       - postgres
-      - mailhog
       - redis
     env_file:
       - .envs/prod/config
@@ -34,11 +33,6 @@ services:
       - ./tmp/db/backups:/backups
     ports:
       - "4400:5432"
-
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    ports:
-      - "8025:8025"
 
   nginx:
     restart: always

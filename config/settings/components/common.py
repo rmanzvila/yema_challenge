@@ -9,12 +9,12 @@ For the full list of settings and their config, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-from typing import Dict, List, Tuple, Union
 from os.path import join
-
-from config.settings.components import PROJECT_PATH, env
+from typing import Dict, List, Tuple, Union
 
 from django.utils.translation import ugettext_lazy as _
+
+from config.settings.components import PROJECT_PATH, env
 
 ADMINS = (
     ('Support', 'rmanzvila@gmail.com'),
@@ -51,21 +51,23 @@ DJANGO_APPS: Tuple[str, ...] = (
 
 THIRD_PARTY_APPS: Tuple[str, ...] = (
 
+    'corsheaders',
     # API Rest
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_api_key',
+    "rest_framework_api_key",
     'anymail',
 )
 
 LOCAL_APPS: Tuple[str, ...] = (
-
+    'apps.appointment.apps.AppointmentConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 MIDDLEWARE: Tuple[str, ...] = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -89,8 +91,8 @@ SITE_ID = 1
 
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es-MX'
+TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -98,7 +100,6 @@ USE_TZ = True
 LANGUAGES = [
     ('es', _('Spanish')),
     ('en', _('English')),
-    ('pt', _('Portuguese')),
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
@@ -112,12 +113,17 @@ FIXTURE_DIRS = (
     join(PROJECT_PATH, 'fixtures'),
 )
 
-# EMAIL CONFIGURATION
-# ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST, EMAIL_PORT = '127.0.0.1', 1025  # Work with MailHog
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='Support <rmanzvila@gmail.com>')
 
+# ------------------------------------------------------------------------------
+# MAIL SETTINGS
+# ------------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='rmanzvila@gmail.com')
+SENDGRID_API_KEY = env('SENDGRID_API_KEY', default='XXXXXXXXXXXXXXXXX')
+
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+ANYMAIL = {
+    'SENDGRID_API_KEY': SENDGRID_API_KEY,
+}
 
 # TEMPLATES CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -186,9 +192,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # EXTRA CONFIGURATION
-AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
-PAGINATION_PAGE_SIZE = 50
 TOKEN_EXPIRATION_DAYS = env.int('DJANGO_TOKEN_EXPIRATION_DAYS', default=7)
 
 # Security
@@ -209,3 +212,30 @@ FEATURE_POLICY: Dict[str, Union[str, List[str]]] = {}  # noqa: TAE002
 
 # Timeouts
 EMAIL_TIMEOUT = 5
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]

@@ -20,6 +20,7 @@ django-modeltranslation==0.14.4  # https://github.com/deschler/django-modeltrans
 # A P I   R E Q U I R E M E N T S
 #
 djangorestframework==3.11.0  # https://github.com/encode/django-rest-framework
+django-cors-headers==3.2.1  # https://github.com/ottoyiu/django-cors-headers
 djangorestframework_simplejwt==4.4.0  # https://github.com/davesque/django-rest-framework-simplejwt
 djangorestframework-api-key==1.4.1  # https://florimondmanca.github.io/djangorestframework-api-key/
 django-anymail==7.1.0 # https://github.com/anymail/django-anymail/

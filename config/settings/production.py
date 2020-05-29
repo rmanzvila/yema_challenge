@@ -10,7 +10,7 @@ import socket
 from typing import List
 
 from config.settings.components import env
-from config.settings.components.common import TEMPLATES, INSTALLED_APPS
+from config.settings.components.common import INSTALLED_APPS, TEMPLATES
 
 DEBUG = False
 
@@ -34,11 +34,6 @@ EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
 # DEBUGGING
 # ------------------------------------------------------------------------------
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2']  # localhost IP, docker internal IP
-# tricks to have debug toolbar when developing with docker
-if os.environ.get('USE_DOCKER') == 'yes':
-    ip = socket.gethostbyname(socket.gethostname())
-    INTERNAL_IPS += ['{0}1'.format(ip[:-1])]
-
 
 # TESTING
 # ------------------------------------------------------------------------------

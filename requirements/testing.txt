@@ -19,3 +19,11 @@ faker==4.0.1  # https://github.com/joke2k/faker
 doubles==1.5.3  # https://github.com/uber/doubles
 requests-mock==1.7.0  # https://github.com/jamielennox/requests-mock
 django-stubs==1.4.0  # https://github.com/typeddjango/django-stubs
+
+# Code quality
+# ------------------------------------------------------------------------------
+flake8==3.5.0  # https://github.com/PyCQA/flake8
+flake8-html==0.4.0  # https://github.com/lordmauve/flake8-html
+coverage==5.0.3  # https://github.com/nedbat/coveragepy
+isort==4.3.21  # https://github.com/timothycrosley/isort
+coverage-badge==1.0.1  # https://github.com/dbrgn/coverage-badge

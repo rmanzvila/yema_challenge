@@ -1,27 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
-from rest_framework_simplejwt.exceptions import InvalidToken, AuthenticationFailed
-
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import APIException, NotAuthenticated, _get_error_details  # noqa: WPS436
+from rest_framework.exceptions import (APIException, NotAuthenticated)
+from rest_framework_simplejwt.exceptions import (AuthenticationFailed,
+                                                 InvalidToken)
 
-from apps.accounts.response_codes import INVALID_TOKEN, AUTHENTICATION_FAILED
-
-from django.utils.translation import ugettext_lazy as _
-
-
-class SimpleValidationError(APIException):
-    """Base class to raise API exceptions."""
-
-    status_code = status.HTTP_400_BAD_REQUEST
-
-    def __init__(self, detail=None, code=None, message=None):  # noqa: D107
-        detail = detail or message or self.default_detail
-        code = code or self.default_code
-
-        self.detail = _get_error_details(detail, code)
+from apps.contrib.response_codes import AUTHENTICATION_FAILED, INVALID_TOKEN
 
 
 class ServerError(APIException):
@@ -36,13 +23,12 @@ class SimpleJWTExceptionParser(object):
 
     @classmethod
     def parse(cls, exc):
-
         new_exc = exc
         if isinstance(exc, InvalidToken):
             new_exc = NotAuthenticated(**INVALID_TOKEN)
         elif isinstance(exc, AuthenticationFailed):
             new_exc = NotAuthenticated(**AUTHENTICATION_FAILED)
-        return new_exc
+        return NotAuthenticated(**AUTHENTICATION_FAILED)
 
 
 def formatted_exception_handler(exc, context):
