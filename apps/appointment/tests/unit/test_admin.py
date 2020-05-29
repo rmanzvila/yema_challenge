@@ -1,9 +1,7 @@
-from datetime import datetime
-
+# -*- encoding:utf-8 -*-
 from django.contrib import messages
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase
-from django.utils.timezone import utc
 from doubles import allow
 
 from apps.appointment.admin import AppointmentAdmin

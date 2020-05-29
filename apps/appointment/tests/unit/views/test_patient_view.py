@@ -2,10 +2,6 @@
 
 import pytest
 from django.urls import reverse
-from rest_framework_api_key.models import APIKey
-
-from apps.appointment.api.v1.serializers import DoctorSerializer
-from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory
 from apps.contrib.utils.mixins import BaseAPITestCase
 

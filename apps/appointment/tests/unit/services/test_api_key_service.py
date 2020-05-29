@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-
 import pytest
 from django.test import TestCase
-from django.utils.timezone import utc
 from faker import Factory
 
-from apps.appointment.api.v1.service import (ApiKeyService, AppointmentService,
-                                             PatientService)
-from apps.appointment.models import Appointment
-from apps.appointment.tests.factories.doctor import DoctorFactory
-from apps.appointment.tests.factories.patient import PatientFactory
+from apps.appointment.api.v1.service import ApiKeyService
 
 fake = Factory.create()
 

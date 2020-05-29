@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-from datetime import time
-
 import factory
-from django.contrib.gis.geos import Point
 from faker import Factory
-
-from apps.appointment.models import Doctor, Patient
+from apps.appointment.models import Patient
 
 fake = Factory.create()
 

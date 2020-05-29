@@ -1,9 +1,9 @@
-
+# -*- encoding:utf-8 -*-
 import pytest
 from django.test import TestCase
 
 from apps.appointment.api.v1.selectors import AppointmentSelector
-from apps.appointment.models import Appointment, Doctor
+from apps.appointment.models import Appointment
 from apps.appointment.tests.factories.appointment import AppointmentFactory
 from apps.appointment.tests.factories.doctor import DoctorFactory
 from apps.appointment.tests.factories.patient import PatientFactory

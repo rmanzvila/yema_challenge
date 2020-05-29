@@ -6,7 +6,7 @@ import factory
 from django.utils.timezone import utc
 from faker import Factory
 
-from apps.appointment.models import Appointment, Doctor
+from apps.appointment.models import Appointment
 
 fake = Factory.create()
 

@@ -2,8 +2,6 @@
 
 import pytest
 from django.urls import reverse
-from rest_framework_api_key.models import APIKey
-
 from apps.contrib.utils.mixins import BaseAPITestCase
 
 

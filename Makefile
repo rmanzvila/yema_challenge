@@ -76,12 +76,3 @@ coverage:
 flushdb:
 	@echo "Flushing database ..."
 	$(COMPOSE_PROD) run --rm django python manage.py flush
-
-debug:
-	@echo "Launchings Server for debbugging..."
-	$(COMPOSE) run --service-ports django
-
-
-isort:
-	@echo "Opening a shell session"
-	$(COMPOSE) run --rm django isort -rc $(ARG)

@@ -3,8 +3,7 @@ import pytest
 from django.utils.translation import ugettext_lazy as _
 from doubles.unittest import TestCase
 
-from apps.appointment.models import Doctor, Patient
-from apps.appointment.tests.factories.doctor import DoctorFactory
+from apps.appointment.models import Patient
 from apps.appointment.tests.factories.patient import PatientFactory
 
 
