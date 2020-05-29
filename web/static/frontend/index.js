@@ -26,7 +26,7 @@ Vue.component('form-component', {
                             <label v-if="see_patients">Paciente nuevo</label>
                         </v-btn>
         
-                        <v-select v-if="see_patients" :items="patients" label="Paciente" item-text="full_name" item-key="patients" v-model="select_patients" :rules="requiredRules" return-objectrequired></v-select>
+                        <v-select v-if="see_patients" :items="patients" label="Paciente" item-text="full_name" item-key="patients" v-model="select_patients" :rules="requiredRules" return-object required></v-select>
         
                         <v-text-field v-if="!see_patients" v-model="name" :counter="120" label="Nombre" required></v-text-field>
         
