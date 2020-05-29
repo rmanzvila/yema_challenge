@@ -45,7 +45,6 @@ class PatientSerializer(serializers.ModelSerializer):
         return '{0} {1}'.format(obj.name, obj.last_name)
 
 
-
 class AppointmentSerializer(serializers.ModelSerializer):
     """Helps to print the appointment info."""
 

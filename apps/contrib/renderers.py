@@ -29,9 +29,7 @@ class SafeJSONEncoder(JSONEncoder):
 class SafeJSONRenderer(JSONRenderer):
     encoder_class = SafeJSONEncoder
 
-    def render(self, data, accepted_media_type=None, renderer_context=None):
-        if data is None:
-            data = {}
+    def render(self, data={}, accepted_media_type=None, renderer_context=None):
         data = {
             'response': data,
             'datetime': datetime.utcnow().replace(tzinfo=utc)

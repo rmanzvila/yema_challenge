@@ -23,13 +23,8 @@ class SimpleJWTExceptionParser(object):
 
     @classmethod
     def parse(cls, exc):
-
-        new_exc = exc
-        if isinstance(exc, InvalidToken):
-            new_exc = NotAuthenticated(**INVALID_TOKEN)
-        elif isinstance(exc, AuthenticationFailed):
-            new_exc = NotAuthenticated(**AUTHENTICATION_FAILED)
-        return new_exc
+        _new_exc = exc
+        return NotAuthenticated(**AUTHENTICATION_FAILED)
 
 
 def formatted_exception_handler(exc, context):
