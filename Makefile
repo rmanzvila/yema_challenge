@@ -13,23 +13,19 @@ help:
 	@echo "  - up			                Run & Up development server"
 	@echo "  - clean			            Remove containers"
 	@echo "  - create_network			    Create docker network to allow share resources"
-	@echo "  - debug			            Run on debug mode"
 	@echo "  - migrate			            Run migrate command"
 	@echo "  - statics			            Run Collect statics command"
 	@echo "  - superuser			        Create a superuser"
+	@echo "  - coverage			            Run coverage report"
 
 
-build_prod:
+build:
 	@echo "Server django up..."
 	$(COMPOSE_PROD) build
 
-up_prod:
-	@echo "Server django up..."
-	$(COMPOSE_PROD) up
-
 up:
 	@echo "Server django up..."
-	$(COMPOSE) up
+	$(COMPOSE_PROD) up
 
 clean:
 	@echo "Cleaning containers ..."
@@ -40,45 +36,35 @@ create_network:
 	@echo "Create a docker network ..."
 	docker network create django_network
 
-debug:
-	@echo "Launchings Server for debbugging..."
-	$(COMPOSE) run --service-ports django
 
 migrations:
 	@echo "Applying migrations ..."
-	$(COMPOSE) run --rm django python manage.py makemigrations $(ARG)
+	$(COMPOSE_PROD) run --rm django python manage.py makemigrations $(ARG)
 
 migrate:
 	@echo "Applying migrations ..."
-	$(COMPOSE) run --rm django python manage.py migrate $(ARG)
+	$(COMPOSE_PROD) run --rm django python manage.py migrate $(ARG)
 
 superuser:
 	@echo "Creating superuser..."
-	$(COMPOSE) run --rm django python manage.py createsuperuser
+	$(COMPOSE_PROD) run --rm django python manage.py createsuperuser
 
 statics:
 	@echo "Collect statics ..."
-	$(COMPOSE) run --rm django python manage.py collectstatic
+	$(COMPOSE_PROD) run --rm django python manage.py collectstatic
 
 test:
 	@echo "Running tests with pytest cleaning cache..."
 	$(COMPOSE_TEST) run --rm django pytest --pyargs $(ARG)
 
-tests:
-	$(COMPOSE_TEST) run --rm django pytest -n auto --pyargs $(ARG)
-
-shell_prod:
-	@echo "Opening container bash session"
-	$(COMPOSE_PROD) run --rm django bash
-
 locales:
 	@echo "Opening a shell session"
-	$(COMPOSE) run --rm django python manage.py makemessages -l en
-	$(COMPOSE) run --rm django python manage.py makemessages -l es_MX
+	$(COMPOSE_PROD) run --rm django python manage.py makemessages -l en
+	$(COMPOSE_PROD) run --rm django python manage.py makemessages -l es_MX
 
 compile_locales:
 	@echo "Opening a shell session"
-	$(COMPOSE) run --rm django python manage.py compilemessages
+	$(COMPOSE_PROD) run --rm django python manage.py compilemessages
 
 coverage:
 	$(COMPOSE_TEST) run django coverage run -m pytest
