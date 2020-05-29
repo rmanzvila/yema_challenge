@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-28 21:27-0500\n"
+"POT-Creation-Date: 2020-05-29 00:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,10 +120,6 @@ msgstr "Citas medicas"
 msgid "Server error"
 msgstr ""
 
-#: apps/contrib/api/responses.py:13
-msgid "Successful operation!"
-msgstr "Operación correcta"
-
 #: apps/contrib/response_codes.py:8
 msgid "This TOKEN is invalid or EXPIRED"
 msgstr "Token invalido"
@@ -140,11 +136,11 @@ msgstr "Detalle de cita"
 msgid "Appointment date"
 msgstr "Fecha de cita"
 
-#: apps/contrib/utils/mixins.py:25
+#: apps/contrib/utils/mixins.py:28
 msgid "Created at"
 msgstr "Fecha creación"
 
-#: apps/contrib/utils/mixins.py:26
+#: apps/contrib/utils/mixins.py:29
 msgid "Updated at"
 msgstr "Fecha de actualización"
 
@@ -155,6 +151,9 @@ msgstr "Español"
 #: config/settings/components/common.py:102
 msgid "English"
 msgstr "Ingles"
+
+#~ msgid "Successful operation!"
+#~ msgstr "Operación correcta"
 
 #~ msgid "Age on months"
 #~ msgstr "Edad en meses"
